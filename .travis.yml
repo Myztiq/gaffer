@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- 0.1
+before_script:
+- npm install -g grunt-cli
+- npm install -g bower
+- bower install
+deploy:
+  provider: heroku
+  api_key:
+    secure: NefB7z7wTvpzMl22TlUDk2b08z2BrRF1YCFkUPrZqlv8ciKXNkn6WAN8YGwY7P+J/zZNOLHW3xzFkSIYol8W0SAJFOfa05dWmsj8ClrpaLNXFPIslCI1vAhipToqbaustHny2HwfZkHd4AV3HZoZxlNobAwq9TeDxDv9ysIHEls=
+  app: gaffer
+  on:
+    repo: Myztiq/gaffer
