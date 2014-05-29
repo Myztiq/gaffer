@@ -4,7 +4,6 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var mergeTrees = require('broccoli-merge-trees');
 var pickFiles = require('broccoli-static-compiler');
 
-
 var fonts = pickFiles('vendor/bootstrap/dist/fonts', {
   srcDir: '/',
   destDir: '/assets/fonts'
@@ -12,9 +11,6 @@ var fonts = pickFiles('vendor/bootstrap/dist/fonts', {
 
 var app = new EmberApp({
   name: require('./package.json').name,
-  trees:{
-    vendor: mergeTrees(['vendor','vendor_custom'], {overwrite: true})
-  },
   minifyCSS: {
     enabled: true,
     options: {}
