@@ -1,0 +1,162 @@
+@import 'bootstrap';
+//@import url('http://fonts.googleapis.com/css?family=Unica+One');
+@import '_unica_one';
+html {
+	height: 100%;
+	body {
+		padding: 80px 0 0 0;
+		height: 100%;
+		.ember-view {
+			min-height: 100%;
+			position: relative;
+		}
+		.clear {
+			clear: both;
+		}
+		.colors-list {
+			margin: 10px 0 20px;
+		}
+		#content {
+			position: static;
+			height: 100%;
+		}
+		.jumbotron {
+			background: none;
+			padding: 0;
+			margin: -46px 0 20px 0;
+			background-image: url('/images/bg.jpg');
+			color: #ffffff;
+			padding: 100px 0;
+			h1 {
+				font-family: 'Unica One', cursive;
+			}
+		}
+		.btn.pull-right {
+			margin: 0 0 0 10px;
+		}
+		.btn {
+			text-shadow: 0 1px rgba(20, 20, 20, .5);
+		}
+		.btn-default,
+		.btn-link {
+			text-shadow: none;
+		}
+		.btn-group {
+			margin: 0 0 10px 0;
+		}
+		#home {
+			.navbar {
+
+				a {
+					cursor: pointer;
+				}
+				.logo {
+					padding: 0;
+					background-color: lighten(@brand-primary, 10%)
+				}
+			}
+		}
+		.nav.nav-pills.nav-stacked {
+			a.active {
+				background-color: lighten(@gray-light, 30%);
+			}
+		}
+		.navbar-nav.navbar-right:last-child {
+			margin-right: 0;
+		}
+		.ind {
+			position: absolute;
+			top:0;
+			left: 0;
+			bottom: 0;
+			width: 5px;
+		}
+		label {
+			a, a:hover, a:active {
+				color: #ffffff;
+				text-decoration: none;
+			}
+		}
+		.navbar-brand {
+			height: 53px;
+			padding: 9px 15px;
+		}
+		.loading {
+			background-image: url(/images/loading.gif);
+			background-position: center;
+			height: 100px;
+			background-repeat: no-repeat;
+		}
+		.row.header {
+			margin: -27px 0 20px 0;
+			background-color: @gray-lighter;
+			border-radius: @border-radius-base;
+			border: 1px solid lighten(@gray-light, 20%);
+			input {
+				background-color: darken(@gray-lighter, 10%);
+				font-size: 24px;
+				padding: 0 20px;
+				height: 50px;
+			}
+		}
+		#footer {
+			padding: 100px 0 30px;
+			.flag {
+				float: right;
+				width: 36px;
+				height: 18px;
+				margin: 0 0 0 10px;
+				.blue {
+					width: 15px;
+					height: 10px;
+					background-color: #182750;
+					float: left;
+				}
+				.red {
+					height: 2px;
+					background-color: #a21b21;
+				}
+				.white {
+					height: 2px;
+					background-color: #f5eccd;
+				}
+
+			}
+		}
+		.right {
+			padding: 20px;
+			height: 100%;
+			margin-top: -26px;
+		}
+		.left {
+			background-color: @gray-lighter;
+			min-height: 100%;
+			position: absolute;
+			margin: -26px 0 0 0;
+			bottom: 0;
+			top: 0;
+		}
+		.left.col.col-sm-2 {
+			padding: 0;
+		}
+		textarea.form-control {
+			height: 200px;
+			resize: none;
+		}
+		input[type='text'],
+		input[type='password'],
+		input[type='email'],
+		input[type='url'],
+		.form-group textarea {
+			transition: all .25s linear;
+			box-shadow: 0 0px 0px #999999; 
+		}
+		input[type='text']:focus,
+		input[type='password']:focus,
+		input[type='email']:focus,
+		input[type='url']:focus,
+		.form-group textarea:focus {
+			box-shadow: 0 5px 10px #999999; 
+		}
+	}
+}

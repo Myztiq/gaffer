@@ -1,0 +1,49 @@
+<div id="projects">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="btn-group btn-group-justified" data-toggle="buttons">
+        <label class="btn btn-primary">
+        <a {{action 'toggleShowAdd'}}>New Project</a>
+      </label>
+        <label class="btn btn-primary active" {{action 'sortByNewest'}}>
+          <input type="radio" name="options"> Newest
+        </label>
+        <label class="btn btn-primary" {{action 'sortByOldest'}}>
+          <input type="radio" name="options"> oldest
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="list-group">
+        {{#each}}
+          {{#link-to 'project' this class="list-group-item"}}
+            {{name}} <span class="pull-right text-muted">{{format-date createdAt}}</span>
+            <div class="ind" {{bind-attr style='liStyle'}}></div>
+          {{/link-to}}
+        {{else}}
+          <li class="list-group-item">
+            You have no projects
+          </li>
+        {{/each}}
+      </div>
+    </div>
+    <div class="col-sm-8">
+      {{#if length}}
+        {{#if showAdd}}
+          {{partial 'newproject'}}
+        {{else}}
+          <h3>
+            Your projects
+          </h3>
+          <p>
+            This is where you create and manage your projects.
+          </p>
+        {{/if}}
+      {{else}}
+        {{partial 'newproject'}}
+      {{/if}}
+    </div>
+  </div>
+</div>

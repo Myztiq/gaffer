@@ -1,0 +1,49 @@
+<div id="home">
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	    <div class="row">
+	      {{partial 'header'}}
+	    </div>
+	 </nav>
+	<div class="left col col-sm-2">
+		<div class="nav nav-pills nav-stacked">
+			<li>
+				<a>This project</a>
+			</li>
+			<li>
+				{{#link-to 'dashboard'}}
+					<span class="glyphicon glyphicon-th"></span> Dashboard
+				{{/link-to}}
+			</li>
+			<li>
+				{{#link-to 'projects'}}
+					<span class="glyphicon glyphicon-book"></span> Projects
+				{{/link-to}}
+			</li>
+			<li>
+				{{#link-to 'projects'}}
+					<span class="glyphicon glyphicon-info-sign"></span> Details
+				{{/link-to}}
+			</li>
+			<li>
+				{{#link-to 'projects'}}
+					<span class="glyphicon glyphicon-file"></span> Documents
+				{{/link-to}}
+			</li>
+			<li>
+				{{#link-to 'projects'}}
+					<span class="glyphicon glyphicon-cog"></span> Settings
+				{{/link-to}}
+			</li>
+			<li>
+				{{#link-to 'projects'}}
+					<span class="glyphicon glyphicon-remove"></span> delete
+				{{/link-to}}
+			</li>
+		</div>
+	</div>
+	<div class="right col col-sm-10 col-sm-offset-2">
+		{{outlet}}
+		{{partial 'footer'}}
+	</div>
+	<div class="clear"></div>
+</div>

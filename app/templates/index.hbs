@@ -1,0 +1,21 @@
+<div class="jumbotron text-center">
+  <h1>Welcome to Gaffer!</h1>
+  <p>We making curating <strong>{data}</strong> for content based apps easy.</p>
+  <p>{{#link-to 'sign-up' classNames="btn btn-warning btn-lg"}}Join Email List{{/link-to}}</p>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col col-sm-8">
+			<h3>More information</h3>
+			<p>
+				We are currently building Gaffer. Please sign up to recieve updates about our progress. 
+			</p>
+		</div>
+		{{#unless activeUser}}
+			<div class="col-sm-4">
+				{{render 'sign-up-insert' sign-up}}
+			</div>
+		{{/unless}}
+	</div>
+	{{partial 'footer'}}
+</div>
