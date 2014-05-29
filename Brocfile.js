@@ -4,20 +4,28 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var mergeTrees = require('broccoli-merge-trees');
 var pickFiles = require('broccoli-static-compiler');
 
+
+var fonts = pickFiles('vendor/bootstrap/dist/fonts', {
+  srcDir: '/',
+  destDir: '/assets/fonts'
+});
+
 var app = new EmberApp({
   name: require('./package.json').name,
+  trees:{
+    vendor: mergeTrees(['vendor','vendor_custom'], {overwrite: true})
+  },
   minifyCSS: {
     enabled: true,
     options: {}
   },
-
   getEnvJSON: require('./config/environment')
 });
 
 // Use this to add additional libraries to the generated output files.
-app.import('vendor/custom-ember-data.js');
 app.import('vendor/bootstrap/dist/js/bootstrap.min.js');
 app.import('vendor/momentjs/moment.js');
+app.import('vendor/custom-ember-data.js');
 app.import('vendor/kinvey/kinvey-ember-2.0.0.min.js');
 
 // If the library that you are including contains AMD or ES6 modules that
