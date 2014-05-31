@@ -3,6 +3,7 @@ NewAccountController = Ember.Controller.extend
   error: ''
   actions:
     create: ->
+      console.log 'Create Action triggered!'
       Kinvey.User.signup
         firstName: @firstName
         lastName: @lastName
