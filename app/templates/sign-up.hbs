@@ -4,7 +4,7 @@
     <form class="form-horizontal" role="form" {{bind-attr class="showErrors:showErrors:hideErrors"}}>
       <div class="form-group">
         <label class="col-sm-4 control-label" for="firstName">first name</label>
-        <div class="col-sm-8" {{bind-attr class="errors.firstName:error"}}>
+        <div class="col-sm-8" {{bind-attr class="errors.firstName.length:error"}}>
           {{input class='form-control' type='text' value=firstName placeholder='first name'}}
           <div class="error-helper alert alert-danger">
             {{errors.firstName}}

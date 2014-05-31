@@ -1,11 +1,37 @@
 <h1>Document</h1>
 {{#link-to 'project' project}}Back to project{{/link-to}}
-<br/>
-<br/>
-Dynamic name: {{name}}
-<br/>
-Project Name: {{project.name}}
 
-{{#each keys}}
-  {{label}}: {{value}}
+
+<label for="formField-name">Name</label>
+{{input value=name id="formField-name"}}
+
+<br/>
+<br/>
+<label for="formField-schema">Schema</label>
+{{view Ember.Select
+  value=selectedSchema
+  content=schemaSelect
+  id="formField-schema"
+  optionValuePath="content.value"
+  optionLabelPath="content.label"
+}}
+
+{{#if isNewSchema}}
+  {{input value=newSchemaName placeholder="New Schema Name"}}
+  <div class="btn btn-primary" {{action 'saveNewSchema'}}>Create</div>
+{{/if}}
+
+<br/>
+<br/>
+{{#if schema}}
+  Schema Name: {{schema.name}}
+{{else}}
+  NO SCHEMA
+{{/if}}
+
+<br/>
+<br/>
+{{#each keyListing}}
+  {{key}}: {{value}}
+  <br/>
 {{/each}}

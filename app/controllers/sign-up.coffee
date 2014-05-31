@@ -1,18 +1,14 @@
-NewAccountController = Ember.Controller.extend Ember.Validations.Mixin,
+NewAccountController = Ember.ObjectController.extend Ember.Validations.Mixin,
+
+  init: ->
+    @_super()
+    @set 'errors', {}
+
   validations: 
     firstName:
       presence: true
-  errors: {}
 
   firstName: ''
-
-  errorUpdater: (->
-    error = @get('errors')
-    console.log 'Error Updator'
-    for key, val of error
-      console.log val
-      @notifyPropertyChange 'errors.'+key
-  ).observes 'errors'
 
   noError: Ember.computed.empty('errors')
   isError: Ember.computed.not('noError')
