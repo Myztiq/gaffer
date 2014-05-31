@@ -23,6 +23,7 @@ app.import('vendor/bootstrap/dist/js/bootstrap.min.js');
 app.import('vendor/momentjs/moment.js');
 app.import('vendor/custom-ember-data.js');
 app.import('vendor/kinvey/kinvey-ember-2.0.0.min.js');
+app.import('vendor/ember-validations.js');
 
 // If the library that you are including contains AMD or ES6 modules that
 // you would like to import into your application please specify an
