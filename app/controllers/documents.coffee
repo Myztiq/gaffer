@@ -6,7 +6,8 @@ ProjectsController = Ember.ArrayController.extend
     newDocument: ->
       @set 'isCreatingDocument', true
       @store.createRecord 'document',
-        name: 'New Document'
+        configuration:
+          name: 'New Document'
       .set('project', @get('project'))
         .save()
         .then (doc)=>

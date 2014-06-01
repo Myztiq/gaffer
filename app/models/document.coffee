@@ -1,6 +1,5 @@
 document = Kinvey.Model.extend
-  name: DS.attr('string')
   project: DS.belongsTo('project')
   schema: DS.belongsTo('schema')
-
+  configuration: DS.attr 'raw'
 `export default document`

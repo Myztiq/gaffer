@@ -5,8 +5,7 @@ DocumentController = Ember.ObjectController.extend
     schemaList = @store.find('schema')
     @set 'schemaList',schemaList
     schemaList.then =>
-      @schemaWatcher()
-
+      @set 'selectedSchema', @get 'schema.id'
 
   keys: {
     "name": "string"
@@ -22,7 +21,6 @@ DocumentController = Ember.ObjectController.extend
       }
     ]
     @get('schemaList').forEach (schema)->
-      console.log 'Recalculating schema array', schema.get('id')
       rtn.push
         label: schema.get 'name'
         value: schema.get 'id'
@@ -30,31 +28,51 @@ DocumentController = Ember.ObjectController.extend
     rtn.push
       label: 'New Schema'
       value: 'new'
+
     rtn
   ).property 'schemaList.@each.id', 'schemaList.@each.name'
 
   selectedSchema: '---'
-
   isNewSchema: Ember.computed.equal 'selectedSchema', 'new'
 
   schemaWatcher: (->
     if !@get('isNewSchema') and @get('selectedSchema') != '---' and @get('selectedSchema')?
-      console.log 'Schema that exists!', @get 'selectedSchema'
       @store.find('schema', @get('selectedSchema')).then (schema)=>
         @set 'schema', schema
-    else
-      console.log 'Schema that does not exist!', @get('selectedSchema')
   ).observes 'selectedSchema'
 
+  saving: false
+  flashSaved: false
+  flasher: (->
+    if @get 'flashSaved'
+      Ember.run.later @, ->
+        @set 'flashSaved', false
+      , 2000
+  ).observes 'flashSaved'
+
   actions:
+    addField: ->
+      @get('schema.fields').addObject {
+        key: null
+        type: 'string'
+      }
+
+    save: ->
+      @set 'saving', true
+
+      @get('content').save().then =>
+        @get('schema').save().then =>
+          @set 'saving', false
+          @set 'flashSaved', true
+
     saveNewSchema: ->
       name = @get 'newSchemaName'
       @store.createRecord 'schema'
       .set 'name', name
       .set('project', @get('project'))
+      .set 'fields', [{key: 'name', type: 'string'}]
       .save()
       .then (doc)=>
-        console.log 'Its been saved', doc.get('id')
         @get('schemaList').addObject doc
         @set 'selectedSchema', doc.get('id')
 

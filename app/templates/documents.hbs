@@ -8,7 +8,7 @@
 <div class="list-group">
   {{#each}}
     {{#link-to 'document' this class="list-group-item"}}
-      {{name}} <span class="pull-right text-muted">{{format-date createdAt}}</span>
+      {{configuration.name}} <span class="pull-right text-muted">{{format-date createdAt}}</span>
     {{/link-to}}
   {{/each}}
 </div>
